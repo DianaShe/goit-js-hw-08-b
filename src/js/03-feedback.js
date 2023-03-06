@@ -14,8 +14,6 @@ function onInputChange(event) {
     
     if (storedData) {
         formData.email = form.elements.email.value;
-    }
-    if (storedData) {
         formData.message = form.elements.message.value;
     }
     
@@ -25,6 +23,9 @@ function onInputChange(event) {
 
 function onFormSubmit(event) {
     event.preventDefault();
+    if (form.elements.email.value === "" || form.elements.message.value === "") {
+        return;
+    }
     console.log(JSON.parse(localStorage.getItem("feedback-form-state")));
     event.currentTarget.reset();
     localStorage.removeItem("feedback-form-state");
